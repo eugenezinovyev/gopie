@@ -21,6 +21,7 @@ These package are used for chart label dimensions measure. Check limitations of 
 - DPI ued for label size measurement: *92*
 - Chart width: *200px*
 - Chart height: *200px*
+- Font: *Roboto Medium*
 # Usage
 ``` go
 	chart := gopie.PieChart{
