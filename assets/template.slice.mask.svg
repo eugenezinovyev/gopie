@@ -1,0 +1,3 @@
+<mask id="slice-mask-{{.ID}}">
+    <path d="{{.Path}}" fill="white" />
+</mask>

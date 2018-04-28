@@ -1,0 +1,1 @@
+<circle fill="{{.Style.Fill}}" cx="{{.CenterX}}" cy="{{.CenterY}}" r="{{.Radius}}" stroke="{{.Style.StrokeColor}}" stroke-width="{{.Style.StrokeWidth}}" mask="url(#circle-mask)"/>

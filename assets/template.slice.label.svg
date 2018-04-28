@@ -1,0 +1,2 @@
+<line x1="{{.Line.X1}}" y1="{{.Line.Y1}}" x2="{{.Line.X2}}" y2="{{.Line.Y2}}" stroke="{{.Line.Style.StrokeColor}}" stroke-width="{{.Line.Style.StrokeWidth}}" />
+<text x="{{.Text.X}}" y="{{.Text.Y}}" text-anchor="{{.Text.FontAnchor}}" alignment-baseline="central" font-family="{{.Text.FontFamily}}" font-size="{{.Text.FontSize}}">{{.Text.Text}}</text>

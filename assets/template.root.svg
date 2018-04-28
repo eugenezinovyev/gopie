@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="{{.Width}}" height="{{.Height}}"
+     version="1.1"
+     baseProfile="full"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     xmlns:ev="http://www.w3.org/2001/xml-events">
+     {{if .NeedsMasking}}
+    <defs>
+        {{if .Pie.Circle}}{{template "template.circle.mask.svg" (derefCircle .Pie.Circle)}}{{end}}
+        {{if .Pie.Slices}}{{range .Pie.Slices}}{{template "template.slice.mask.svg" .}}{{end}}{{end}}
+    </defs>
+    {{end}}
+    <g id="chart">
+        {{if and .NeedsMasking .Pie.Background}}{{template "template.background.svg" (derefCircle .Pie.Background)}}{{end}}
+        <g id="slices">
+            {{if .Pie.Slices}}{{range .Pie.Slices}}{{template "template.slice.svg" .}}{{end}}{{end}}
+            {{if .Pie.Circle}}{{template "template.circle.svg" (derefCircle .Pie.Circle)}}{{end}}
+            {{range .Labels}}{{template "template.slice.label.svg" .}}{{end}}
+        </g>
+    </g>
+</svg>

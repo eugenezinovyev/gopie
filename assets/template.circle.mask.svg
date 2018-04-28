@@ -1,0 +1,3 @@
+<mask id="circle-mask">
+    <circle fill="white" cx="{{.CenterX}}" cy="{{.CenterY}}" r="{{.Radius}}" />
+</mask>
