@@ -3,6 +3,11 @@ Package gopie renders pie charts to SVG.
 */
 package gopie
 
+import (
+	"github.com/eugenezinoviev/gopie/assets"
+	"github.com/golang/freetype/truetype"
+)
+
 //go:generate go run mbed/mbed.go -d ./assets -o ./assets/assets.go -p assets
 
 // Value represents chart value.
@@ -13,18 +18,19 @@ type Value struct {
 
 // PieChart struct represents a pie chart rendering options.
 type PieChart struct {
-	Width          float64  // SVG Width. Default is 200.
-	Height         float64  // SVG Height. Default is 200.
-	Values         []Value  // Chart values.
-	SliceColors    []string // Colors to be used for pie slices and label lines.
-	StrokeColor    string   // Slice stroke color. Default is "#ffffff".
-	StrokeWidth    float64  // Slice stroke width. Default is 0 px.
-	FontSize       float64  // Label font size. Default is 12 px.
-	FontFamily     string   // Label font family. Default is "Roboto Medium".
-	LabelLine      float64  // Label line length. Default is 10 px.
-	LabelLineWidth float64  // Label line width. Default is 2 px.
-	LabelPadding   float64  // Label text padding. Default is 4 px.
-	DPI            float64  // DPI. Default is 92.
+	Width          float64        // SVG Width. Default is 200.
+	Height         float64        // SVG Height. Default is 200.
+	Values         []Value        // Chart values.
+	SliceColors    []string       // Colors to be used for pie slices and label lines.
+	StrokeColor    string         // Slice stroke color. Default is "#ffffff".
+	StrokeWidth    float64        // Slice stroke width. Default is 0 px.
+	FontSize       float64        // Label font size. Default is 12 px.
+	FontFamily     string         // Label font family. Default is "Roboto Medium".
+	LabelLine      float64        // Label line length. Default is 10 px.
+	LabelLineWidth float64        // Label line width. Default is 2 px.
+	LabelPadding   float64        // Label text padding. Default is 4 px.
+	DPI            float64        // DPI. Default is 92.
+	Font           *truetype.Font // Label font. Default is Roboto Medium.
 }
 
 func (c PieChart) getFontFamily() string {
@@ -127,4 +133,12 @@ func (c PieChart) calculateTotalValue() float64 {
 	}
 
 	return total
+}
+
+func (c PieChart) getFont() (*truetype.Font, error) {
+	if c.Font != nil {
+		return c.Font, nil
+	}
+
+	return truetype.Parse(assets.GetFileBytes("assets/Roboto-Medium.ttf"))
 }

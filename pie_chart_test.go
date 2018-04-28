@@ -3,6 +3,9 @@ package gopie
 import (
 	"reflect"
 	"testing"
+
+	"github.com/eugenezinoviev/gopie/assets"
+	"github.com/golang/freetype/truetype"
 )
 
 var (
@@ -13,6 +16,7 @@ var (
 		DPI:            120,
 		FontFamily:     "FFF",
 		FontSize:       114,
+		Font:           new(truetype.Font),
 		LabelLine:      111,
 		LabelLineWidth: 110,
 		LabelPadding:   109,
@@ -46,6 +50,17 @@ func TestGetFontSizeDefaultValue(t *testing.T) {
 	actual := chart.getFontSize()
 
 	if actual != expected {
+		t.Fatalf("Expected %v but found %v", expected, actual)
+	}
+}
+
+func TestGetFontDefaultValue(t *testing.T) {
+	chart := defaultPieChart
+
+	expected, _ := truetype.Parse(assets.GetFileBytes("assets/Roboto-Medium.ttf"))
+	actual, _ := chart.getFont()
+
+	if !reflect.DeepEqual(*actual, *expected) {
 		t.Fatalf("Expected %v but found %v", expected, actual)
 	}
 }
@@ -212,6 +227,17 @@ func TestGetFontSizeSpecifiedValue(t *testing.T) {
 	actual := chart.getFontSize()
 
 	if actual != expected {
+		t.Fatalf("Expected %v but found %v", expected, actual)
+	}
+}
+
+func TestGetFontSpecifiedValue(t *testing.T) {
+	chart := filledPieChart
+
+	expected := filledPieChart.Font
+	actual, _ := chart.getFont()
+
+	if !reflect.DeepEqual(*actual, *expected) {
 		t.Fatalf("Expected %v but found %v", expected, actual)
 	}
 }

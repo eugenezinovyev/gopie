@@ -4,7 +4,6 @@ import (
 	"log"
 	"math"
 
-	"github.com/eugenezinoviev/gopie/assets"
 	"github.com/golang/freetype/truetype"
 	"golang.org/x/image/font"
 )
@@ -34,7 +33,7 @@ func toDecartTranslate(angle, radius, dx, dy float64) (ex, ey float64) {
 
 func measureLongestLabel(chart PieChart) (rect, error) {
 	longestLabel := findLongestLabel(chart)
-	return measureString(longestLabel, chart.getFontSize(), chart.getDPI())
+	return measureString(chart, longestLabel, chart.getFontSize(), chart.getDPI())
 }
 
 func findLongestLabel(chart PieChart) string {
@@ -47,8 +46,8 @@ func findLongestLabel(chart PieChart) string {
 	return longestLabel
 }
 
-func measureString(text string, fontSize, dpi float64) (r rect, err error) {
-	f, err := getFont()
+func measureString(chart PieChart, text string, fontSize, dpi float64) (r rect, err error) {
+	f, err := chart.getFont()
 	if err != nil {
 		return
 	}
@@ -67,8 +66,4 @@ func measureString(text string, fontSize, dpi float64) (r rect, err error) {
 		Height: heigth,
 	}
 	return
-}
-
-func getFont() (*truetype.Font, error) {
-	return truetype.Parse(assets.GetFileBytes("assets/Roboto-Medium.ttf"))
 }
