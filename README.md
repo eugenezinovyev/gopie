@@ -8,7 +8,7 @@ This package depends on the following packages:
 - github.com/golang/freetype/truetype
 - golang.org/x/image/font
 
-These package are used for chart label dimensions measure. Check limitations of [github.com/golang/freetype/truetype](https://github.com/golang/freetype/truetype) package if you plan to use label font different than the default one.
+These package are used for chart label dimensions measure. Check limitations of [github.com/golang/freetype](https://github.com/golang/freetype) package if you plan to use label font different than the default one.
 # Defaults
 - Font used for label size measurement: *Roboto Medium*
 - Default slice colors: *Material Design palette 400* (see: [https://material.io/color](https://material.io/color))
