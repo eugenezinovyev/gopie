@@ -1,6 +1,7 @@
 package gopie
 
 import (
+	"io/ioutil"
 	"reflect"
 	"testing"
 
@@ -16,7 +17,6 @@ var (
 		DPI:            120,
 		FontFamily:     "FFF",
 		FontSize:       114,
-		Font:           new(truetype.Font),
 		LabelLine:      111,
 		LabelLineWidth: 110,
 		LabelPadding:   109,
@@ -50,6 +50,17 @@ func TestGetFontSizeDefaultValue(t *testing.T) {
 	actual := chart.getFontSize()
 
 	if actual != expected {
+		t.Fatalf("Expected %v but found %v", expected, actual)
+	}
+}
+
+func TestGetFontBytesDefaultValue(t *testing.T) {
+	chart := defaultPieChart
+
+	expected := assets.GetFileBytes("assets/Roboto-Medium.ttf")
+	actual := chart.getFontBytes()
+
+	if !reflect.DeepEqual(actual, expected) {
 		t.Fatalf("Expected %v but found %v", expected, actual)
 	}
 }
@@ -232,12 +243,45 @@ func TestGetFontSizeSpecifiedValue(t *testing.T) {
 }
 
 func TestGetFontSpecifiedValue(t *testing.T) {
-	chart := filledPieChart
+	chart := &filledPieChart
 
-	expected := filledPieChart.Font
+	customFontBytes, err := ioutil.ReadFile("_examples/font/Roboto-Regular.ttf")
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	err = chart.SetFont(customFontBytes)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	expected, err := truetype.Parse(customFontBytes)
+	if err != nil {
+		t.Fatal(err)
+	}
+
 	actual, _ := chart.getFont()
 
 	if !reflect.DeepEqual(*actual, *expected) {
+		t.Fatalf("Expected %v but found %v", expected, actual)
+	}
+}
+
+func TestGetFontBytesSpecifiedValue(t *testing.T) {
+	chart := &defaultPieChart
+
+	expected, err := ioutil.ReadFile("_examples/font/Roboto-Regular.ttf")
+	if err != nil {
+		t.Fatal(err)
+	}
+	err = chart.SetFont(expected)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	actual := chart.getFontBytes()
+
+	if !reflect.DeepEqual(actual, expected) {
 		t.Fatalf("Expected %v but found %v", expected, actual)
 	}
 }

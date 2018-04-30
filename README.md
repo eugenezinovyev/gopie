@@ -22,6 +22,7 @@ These package are used for chart label dimensions measure. Check limitations of 
 - Chart width: *200px*
 - Chart height: *200px*
 - Font: *Roboto Medium*
+- Embed font: *false*
 # Usage
 ``` go
 	chart := gopie.PieChart{
@@ -33,6 +34,22 @@ These package are used for chart label dimensions measure. Check limitations of 
 	}
 
 	svgBytes, err := chart.SVG()
+```
+## Custom slice colors
+Check example in `./_examples/custom_colors`
+``` go
+	chart := gopie.PieChart{
+		...
+		SliceColors:    []string{"firebrick", "sandybrown", "mediumseagreen", "deepskyblue"},
+		...
+	}
+```
+## Embed font
+Check example in `./_examples/font`
+``` go
+	robotoRegular, err := ioutil.ReadFile("Roboto-Regular.ttf")
+	check(err)
+	chart.SetFont(robotoRegular)
 ```
 You can also check `./_examples` folder for more examples of usage.
 # Licence

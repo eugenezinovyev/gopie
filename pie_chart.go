@@ -30,7 +30,9 @@ type PieChart struct {
 	LabelLineWidth float64        // Label line width. Default is 2 px.
 	LabelPadding   float64        // Label text padding. Default is 4 px.
 	DPI            float64        // DPI. Default is 92.
-	Font           *truetype.Font // Label font. Default is Roboto Medium.
+	font           *truetype.Font // label font
+	fontBytes      []byte         // font bytes
+	EmbedFont      bool           // Whether embed font or not.
 }
 
 func (c PieChart) getFontFamily() string {
@@ -136,9 +138,30 @@ func (c PieChart) calculateTotalValue() float64 {
 }
 
 func (c PieChart) getFont() (*truetype.Font, error) {
-	if c.Font != nil {
-		return c.Font, nil
+	if c.font != nil {
+		return c.font, nil
 	}
 
-	return truetype.Parse(assets.GetFileBytes("assets/Roboto-Medium.ttf"))
+	return truetype.Parse(c.getFontBytes())
+}
+
+func (c PieChart) getFontBytes() []byte {
+	if len(c.fontBytes) != 0 {
+		return c.fontBytes
+	}
+
+	return assets.GetFileBytes("assets/Roboto-Medium.ttf")
+}
+
+// SetFont function sets font for the chart.
+// The parameter should contain bytes of TTF font.
+func (c *PieChart) SetFont(ttf []byte) (err error) {
+	font, err := truetype.Parse(ttf)
+	if err != nil {
+		return
+	}
+
+	c.fontBytes = ttf
+	c.font = font
+	return
 }

@@ -44,6 +44,13 @@ type chart struct {
 	Pie          pie
 	Labels       []label
 	NeedsMasking bool
+	EmbedFont    bool
+	Font         fontDetails
+}
+
+type fontDetails struct {
+	FontFamily string
+	Base64     string
 }
 
 type label struct {

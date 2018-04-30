@@ -2,6 +2,7 @@ package gopie
 
 import (
 	"bytes"
+	"encoding/base64"
 	"text/template"
 )
 
@@ -17,12 +18,19 @@ func (o PieChart) SVG() (svgBytes []byte, err error) {
 
 	labels := createLabels(o, pieRect)
 
+	font, err := createFontDefault(o)
+	if err != nil {
+		return
+	}
+
 	c := chart{
 		Pie:          pie,
 		Labels:       labels,
 		Width:        o.getWidth(),
 		Height:       o.getHeight(),
 		NeedsMasking: o.getStrokeWidth() > 0,
+		EmbedFont:    o.EmbedFont,
+		Font:         font,
 	}
 
 	tpl, err := createSvgTemplate()
@@ -33,6 +41,23 @@ func (o PieChart) SVG() (svgBytes []byte, err error) {
 
 	svgBytes, err = renderTemplate(tpl, c)
 
+	return
+}
+
+func createFontDefault(chart PieChart) (f fontDetails, err error) {
+	var buffer bytes.Buffer
+
+	encoder := base64.NewEncoder(base64.StdEncoding, &buffer)
+	defer encoder.Close()
+	_, err = encoder.Write(chart.getFontBytes())
+	if err != nil {
+		return
+	}
+
+	f = fontDetails{
+		FontFamily: chart.getFontFamily(),
+		Base64:     buffer.String(),
+	}
 	return
 }
 

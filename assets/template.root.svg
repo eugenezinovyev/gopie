@@ -5,10 +5,13 @@
      xmlns="http://www.w3.org/2000/svg"
      xmlns:xlink="http://www.w3.org/1999/xlink"
      xmlns:ev="http://www.w3.org/2001/xml-events">
-     {{if .NeedsMasking}}
+     {{if or .EmbedFont .NeedsMasking}}
     <defs>
+        {{if .NeedsMasking}}
         {{if .Pie.Circle}}{{template "template.circle.mask.svg" (derefCircle .Pie.Circle)}}{{end}}
         {{if .Pie.Slices}}{{range .Pie.Slices}}{{template "template.slice.mask.svg" .}}{{end}}{{end}}
+        {{end}}
+        {{if .EmbedFont}}{{template "template.font.svg" .Font}}{{end}}
     </defs>
     {{end}}
     <g id="chart">

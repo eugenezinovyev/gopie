@@ -1,0 +1,6 @@
+<style>
+    @font-face {
+        font-family: "{{.FontFamily}}";
+        src: url("data:application/font-truetype;charset=utf-8;base64,{{.Base64}}");
+    }
+</style>

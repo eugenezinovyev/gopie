@@ -16,6 +16,7 @@ var childTemplates = []string{
 	"assets/template.slice.svg",
 	"assets/template.slice.mask.svg",
 	"assets/template.slice.label.svg",
+	"assets/template.font.svg",
 }
 
 func createSvgTemplate() (tpl *template.Template, err error) {
