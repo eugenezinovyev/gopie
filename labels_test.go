@@ -11,7 +11,7 @@ func TestCalculateLabelLineInnerRadiusStrokeNotZero(t *testing.T) {
 	expected := rectIncircleRadius - stroke
 
 	c := PieChart{StrokeWidth: stroke}
-	r := rect{Left: 0, Top: 0, Width: rectIncircleRadius * 2, Height: rectIncircleRadius * 2}
+	r := rectangle{Left: 0, Top: 0, Width: rectIncircleRadius * 2, Height: rectIncircleRadius * 2}
 	radius := calculateLabelLineInnerRadius(c, r)
 
 	if radius != expected {
@@ -25,7 +25,7 @@ func TestCalculateLabelLineInnerRadiusStrokeIsZero(t *testing.T) {
 	expected := rectIncircleRadius
 
 	c := PieChart{StrokeWidth: stroke}
-	r := rect{Left: 0, Top: 0, Width: rectIncircleRadius * 2, Height: rectIncircleRadius * 2}
+	r := rectangle{Left: 0, Top: 0, Width: rectIncircleRadius * 2, Height: rectIncircleRadius * 2}
 	radius := calculateLabelLineInnerRadius(c, r)
 
 	if radius != expected {
@@ -40,7 +40,7 @@ func TestCalculateLabelLineOuterRadiusStrokeNotZero(t *testing.T) {
 	expected := rectIncircleRadius + labelLine
 
 	c := PieChart{StrokeWidth: stroke, LabelLineWidth: labelLine}
-	r := rect{Left: 0, Top: 0, Width: rectIncircleRadius * 2, Height: rectIncircleRadius * 2}
+	r := rectangle{Left: 0, Top: 0, Width: rectIncircleRadius * 2, Height: rectIncircleRadius * 2}
 	radius := calculateLabelLineOuterRadius(c, r)
 
 	if radius != expected {
@@ -55,7 +55,7 @@ func TestCalculateLabelLineOuterRadiusStrokeIsZero(t *testing.T) {
 	expected := rectIncircleRadius + labelLine
 
 	c := PieChart{StrokeWidth: stroke, LabelLineWidth: labelLine}
-	r := rect{Left: 0, Top: 0, Width: rectIncircleRadius * 2, Height: rectIncircleRadius * 2}
+	r := rectangle{Left: 0, Top: 0, Width: rectIncircleRadius * 2, Height: rectIncircleRadius * 2}
 	radius := calculateLabelLineOuterRadius(c, r)
 
 	if radius != expected {
@@ -71,7 +71,7 @@ func TestCalculateTextRadiusNotZero(t *testing.T) {
 	expected := rectIncircleRadius + labelLine + textPadding
 
 	c := PieChart{StrokeWidth: stroke, LabelLineWidth: labelLine, LabelPadding: textPadding}
-	r := rect{Left: 0, Top: 0, Width: rectIncircleRadius * 2, Height: rectIncircleRadius * 2}
+	r := rectangle{Left: 0, Top: 0, Width: rectIncircleRadius * 2, Height: rectIncircleRadius * 2}
 	radius := calculateTextRadius(c, r)
 
 	if radius != expected {
@@ -87,7 +87,7 @@ func TestCalculateTextRadiusIsZero(t *testing.T) {
 	expected := rectIncircleRadius + labelLine + textPadding
 
 	c := PieChart{StrokeWidth: stroke, LabelLineWidth: labelLine, LabelPadding: textPadding}
-	r := rect{Left: 0, Top: 0, Width: rectIncircleRadius * 2, Height: rectIncircleRadius * 2}
+	r := rectangle{Left: 0, Top: 0, Width: rectIncircleRadius * 2, Height: rectIncircleRadius * 2}
 	radius := calculateTextRadius(c, r)
 
 	if radius != expected {
@@ -103,7 +103,7 @@ func TestCalculateTextRadiusNoTextPadding(t *testing.T) {
 	expected := rectIncircleRadius + labelLine + defaultLabelPadding
 
 	c := PieChart{StrokeWidth: stroke, LabelLineWidth: labelLine, LabelPadding: textPadding}
-	r := rect{Left: 0, Top: 0, Width: rectIncircleRadius * 2, Height: rectIncircleRadius * 2}
+	r := rectangle{Left: 0, Top: 0, Width: rectIncircleRadius * 2, Height: rectIncircleRadius * 2}
 	radius := calculateTextRadius(c, r)
 
 	if radius != expected {
@@ -296,7 +296,7 @@ func TestCreateLabelsSingleLabel(t *testing.T) {
 		LabelLine:   labelLine,
 		StrokeWidth: stroke,
 	}
-	pieRect := rect{Left: 0, Top: 0, Width: 50, Height: 50}
+	pieRect := rectangle{Left: 0, Top: 0, Width: 50, Height: 50}
 
 	labels := createLabels(chart, pieRect)
 
@@ -325,7 +325,7 @@ func TestCreateLabelsMultipleLabels(t *testing.T) {
 	chart := PieChart{
 		Values: []Value{{1, "Label1"}, {1, "Label2"}},
 	}
-	pieRect := rect{Left: 0, Top: 0, Width: 50, Height: 50}
+	pieRect := rectangle{Left: 0, Top: 0, Width: 50, Height: 50}
 	labels := createLabels(chart, pieRect)
 
 	actualCount := len(labels)

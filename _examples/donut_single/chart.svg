@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="500" height="300"
+     version="1.1"
+     baseProfile="full"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     xmlns:ev="http://www.w3.org/2001/xml-events">
+     
+    <g id="chart">
+        
+        
+            
+            <g id="slices">
+                
+                <circle fill="#ef5350" cx="250" cy="150" r="124.66666666666666" stroke="#ffffff" stroke-width="0" mask="url(#circle-mask)"/>
+                <circle fill="#ffffff" cx="250" cy="150" r="90" stroke="" stroke-width="0" mask="url(#circle-mask)"/>
+                <line x1="374.66666666666663" y1="150" x2="384.66666666666663" y2="150" stroke="#ef5350" stroke-width="2" />
+<text x="388.66666666666663" y="150" text-anchor="start" alignment-baseline="central" font-family="Roboto Medium" font-size="12">Single Value</text>
+            </g>
+        
+    </g>
+</svg>

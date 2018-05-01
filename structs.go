@@ -41,7 +41,8 @@ type text struct {
 type chart struct {
 	Width        float64
 	Height       float64
-	Pie          pie
+	Pie          *pie
+	Donut        *donut
 	Labels       []label
 	NeedsMasking bool
 	EmbedFont    bool
@@ -58,17 +59,17 @@ type label struct {
 	Line line
 }
 
-type rect struct {
+type rectangle struct {
 	Left   float64
 	Top    float64
 	Width  float64
 	Height float64
 }
 
-func (r rect) getCenter() (centerX, centerY float64) {
+func (r rectangle) getCenter() (centerX, centerY float64) {
 	return r.Left + r.Width/2, r.Top + r.Height/2
 }
 
-func (r rect) calculateIncircleRadius() float64 {
+func (r rectangle) calculateIncircleRadius() float64 {
 	return math.Min(r.Height, r.Width) / 2
 }

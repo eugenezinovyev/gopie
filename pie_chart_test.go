@@ -29,6 +29,7 @@ var (
 			Value{118, "Label3"},
 			Value{119, "Label4"},
 		},
+		InnerRadius: 40,
 	}
 )
 
@@ -214,6 +215,17 @@ func TestCalculateTotalValueDefaultValue(t *testing.T) {
 
 	expected := float64(0)
 	actual := chart.calculateTotalValue()
+
+	if actual != expected {
+		t.Fatalf("Expected %v but found %v", expected, actual)
+	}
+}
+
+func TestGetInnerRadiusDefaultValue(t *testing.T) {
+	chart := defaultPieChart
+
+	expected := defaultInnerRadius
+	actual := chart.getInnerRadius()
 
 	if actual != expected {
 		t.Fatalf("Expected %v but found %v", expected, actual)
@@ -424,6 +436,17 @@ func TestCalculateTotalValueSpecifiedValue(t *testing.T) {
 
 	expected := float64(470)
 	actual := chart.calculateTotalValue()
+
+	if actual != expected {
+		t.Fatalf("Expected %v but found %v", expected, actual)
+	}
+}
+
+func TestGetInnerRadiusSpecifiedValue(t *testing.T) {
+	chart := filledPieChart
+
+	expected := chart.InnerRadius
+	actual := chart.getInnerRadius()
 
 	if actual != expected {
 		t.Fatalf("Expected %v but found %v", expected, actual)

@@ -23,6 +23,7 @@ These package are used for chart label dimensions measure. Check limitations of 
 - Chart height: *200px*
 - Font: *Roboto Medium*
 - Embed font: *false*
+- Inner raduis: *0px*
 # Usage
 ``` go
 	chart := gopie.PieChart{
@@ -50,6 +51,15 @@ Check example in `./_examples/font`
 	robotoRegular, err := ioutil.ReadFile("Roboto-Regular.ttf")
 	check(err)
 	chart.SetFont(robotoRegular)
+```
+## Donut
+Check example in `./_examples/donut`
+``` go
+	chart := gopie.PieChart{
+		...
+		InnerRadius:    90, // Forces chart to leave empty circle with 90px radius at center
+		...
+	}
 ```
 You can also check `./_examples` folder for more examples of usage.
 # Licence

@@ -1,0 +1,82 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build",
+            "type": "shell",
+            "command": "go",
+            "args": [
+                "build"
+            ],
+            "dependsOn": "Generate",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$go"
+            ]
+        },
+        {
+            "label": "Generate",
+            "type": "shell",
+            "command": "go",
+            "args": [
+                "generate",
+                "pie_chart.go"
+            ],
+            "group": "build",
+            "problemMatcher": [
+                "$go"
+            ]
+        },
+        {
+            "label": "Test",
+            "type": "shell",
+            "command": "go",
+            "args": [
+                "test",
+                "-cover"
+            ],
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$go"
+            ]
+        },
+        {
+            "label": "Cover",
+            "type": "shell",
+            "command": "go",
+            "args": [
+                "tool",
+                "cover",
+                "-html",
+                "cover.out",
+                "-o",
+                "cover.html"
+            ],
+            "dependsOn": "Create coverage profile",
+            "problemMatcher": [
+                "$go"
+            ]
+        },
+        {
+            "label": "Create coverage profile",
+            "type": "shell",
+            "command": "go",
+            "args": [
+                "test",
+                "-coverprofile",
+                "cover.out"
+            ],
+            "problemMatcher": [
+                "$go"
+            ]
+        }
+    ]
+}

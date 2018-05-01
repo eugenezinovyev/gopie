@@ -32,7 +32,8 @@ type PieChart struct {
 	DPI            float64        // DPI. Default is 92.
 	font           *truetype.Font // label font
 	fontBytes      []byte         // font bytes
-	EmbedFont      bool           // Whether embed font or not.
+	EmbedFont      bool           // Whether embed font or not. Default is false.
+	InnerRadius    float64        // Inner radius or donut chart. Default is 0 which means by default pie chart will be rendered.
 }
 
 func (c PieChart) getFontFamily() string {
@@ -164,4 +165,11 @@ func (c *PieChart) SetFont(ttf []byte) (err error) {
 	c.fontBytes = ttf
 	c.font = font
 	return
+}
+
+func (c PieChart) getInnerRadius() float64 {
+	if c.InnerRadius > 0 {
+		return c.InnerRadius
+	}
+	return defaultInnerRadius
 }

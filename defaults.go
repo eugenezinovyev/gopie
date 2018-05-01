@@ -23,14 +23,16 @@ var (
 		"#bdbdbd",
 		"#78909c",
 	}
-	defaultStrokeColor            = "#ffffff"
-	defaultStrokeWidth    float64 = 0 // px
-	defaultFontFamily     string  = "Roboto Medium"
-	defaultFontSize       float64 = 12 // pt
-	defaultLabelLine      float64 = 10 // px
-	defaultLabelLineWidth float64 = 2  // px
-	defaultLabelPadding   float64 = 4  // px
-	defaultDPI            float64 = 92
-	defaultWidth          float64 = 200
-	defaultHeight         float64 = 200
+	defaultBackgroundColor         = "#ffffff"
+	defaultStrokeColor             = "#ffffff"
+	defaultStrokeWidth     float64 = 0 // px
+	defaultFontFamily      string  = "Roboto Medium"
+	defaultFontSize        float64 = 12 // pt
+	defaultLabelLine       float64 = 10 // px
+	defaultLabelLineWidth  float64 = 2  // px
+	defaultLabelPadding    float64 = 4  // px
+	defaultDPI             float64 = 92
+	defaultWidth           float64 = 200
+	defaultHeight          float64 = 200
+	defaultInnerRadius     float64 = 0 // px
 )

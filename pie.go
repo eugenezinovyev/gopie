@@ -11,7 +11,7 @@ type pie struct {
 	Background *circle
 }
 
-func newPie(chart PieChart, pieRect rect) pie {
+func newPie(chart PieChart, pieRect rectangle) pie {
 	if len(chart.Values) == 0 {
 		return emptyPie(chart, pieRect)
 	}
@@ -23,11 +23,11 @@ func newPie(chart PieChart, pieRect rect) pie {
 	return cutPie(chart, pieRect)
 }
 
-func emptyPie(chart PieChart, pieRect rect) pie {
+func emptyPie(chart PieChart, pieRect rectangle) pie {
 	return pie{}
 }
 
-func uncutPie(chart PieChart, pieRect rect) pie {
+func uncutPie(chart PieChart, pieRect rectangle) pie {
 	centerX, centerY := pieRect.getCenter()
 	slicesCircleRadius := calculateSlicesRadius(chart, pieRect)
 
@@ -42,7 +42,7 @@ func uncutPie(chart PieChart, pieRect rect) pie {
 	}
 }
 
-func cutPie(chart PieChart, pieRect rect) pie {
+func cutPie(chart PieChart, pieRect rectangle) pie {
 	centerX, centerY := pieRect.getCenter()
 	radius := calculateSlicesRadius(chart, pieRect)
 
@@ -51,7 +51,7 @@ func cutPie(chart PieChart, pieRect rect) pie {
 	slices := make([]slice, len(chart.Values))
 	for index, value := range chart.Values {
 		angleOffset := (sum / total) * twoPi
-		slices[index] = createSlice(index, total, angleOffset, value, centerX, centerY, radius, chart)
+		slices[index] = createPieSlice(index, total, angleOffset, value, centerX, centerY, radius, chart)
 		sum += value.Value
 	}
 
@@ -61,7 +61,7 @@ func cutPie(chart PieChart, pieRect rect) pie {
 	}
 }
 
-func createSlice(id int, total, angleOffset float64, value Value, centerX, centerY, radius float64, chart PieChart) slice {
+func createPieSlice(id int, total, angleOffset float64, value Value, centerX, centerY, radius float64, chart PieChart) slice {
 	angle := twoPi * value.Value / total
 	startX, startY := toDecartTranslate(angleOffset, radius, centerX, centerY)
 	endX, endY := toDecartTranslate(angleOffset+angle, radius, centerX, centerY)
@@ -86,15 +86,7 @@ func createSlice(id int, total, angleOffset float64, value Value, centerX, cente
 	}
 }
 
-func createSliceStyle(chart PieChart, id int) style {
-	return style{
-		Fill:        chart.getSliceColor(id),
-		StrokeColor: chart.getStrokeColor(),
-		StrokeWidth: chart.getStrokeWidth(),
-	}
-}
-
-func createBackgroundCircle(chart PieChart, pieRect rect) *circle {
+func createBackgroundCircle(chart PieChart, pieRect rectangle) *circle {
 	centerX, centerY := pieRect.getCenter()
 	radius := pieRect.calculateIncircleRadius()
 
@@ -102,13 +94,11 @@ func createBackgroundCircle(chart PieChart, pieRect rect) *circle {
 		CenterX: centerX,
 		CenterY: centerY,
 		Radius:  radius,
-		Style: style{
-			Fill: chart.getStrokeColor(),
-		},
+		Style:   createBackgroundCircleStyle(chart),
 	}
 }
 
-func calculateSlicesRadius(c PieChart, r rect) float64 {
+func calculateSlicesRadius(c PieChart, r rectangle) float64 {
 	outerRadius := r.calculateIncircleRadius()
 	strokeWidth := c.getStrokeWidth()
 	if strokeWidth == 0 {

@@ -31,7 +31,7 @@ func toDecartTranslate(angle, radius, dx, dy float64) (ex, ey float64) {
 	return sx + dx, sy + dy
 }
 
-func measureLongestLabel(chart PieChart) (rect, error) {
+func measureLongestLabel(chart PieChart) (rectangle, error) {
 	longestLabel := findLongestLabel(chart)
 	return measureString(chart, longestLabel, chart.getFontSize(), chart.getDPI())
 }
@@ -46,7 +46,7 @@ func findLongestLabel(chart PieChart) string {
 	return longestLabel
 }
 
-func measureString(chart PieChart, text string, fontSize, dpi float64) (r rect, err error) {
+func measureString(chart PieChart, text string, fontSize, dpi float64) (r rectangle, err error) {
 	f, err := chart.getFont()
 	if err != nil {
 		return
@@ -61,7 +61,7 @@ func measureString(chart PieChart, text string, fontSize, dpi float64) (r rect, 
 	width := drawer.MeasureString(text).Ceil()
 	heigth := float64(pointsToPixels(dpi, fontSize))
 
-	r = rect{
+	r = rectangle{
 		Width:  float64(width),
 		Height: heigth,
 	}

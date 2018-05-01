@@ -8,11 +8,14 @@
      
     <g id="chart">
         
-        <g id="slices">
             
-            <circle fill="#ef5350" cx="250" cy="150" r="122.11111111111111" stroke="#ffffff" stroke-width="0" mask="url(#circle-mask)"/>
-            <line x1="372.1111111111111" y1="150" x2="382.1111111111111" y2="150" stroke="#ef5350" stroke-width="1" />
+            <g id="slices">
+                
+                <circle fill="#ef5350" cx="250" cy="150" r="122.11111111111111" stroke="#ffffff" stroke-width="0" mask="url(#circle-mask)"/>
+                <line x1="372.1111111111111" y1="150" x2="382.1111111111111" y2="150" stroke="#ef5350" stroke-width="1" />
 <text x="386.1111111111111" y="150" text-anchor="start" alignment-baseline="central" font-family="Roboto Medium" font-size="14">Single Value</text>
-        </g>
+            </g>
+        
+        
     </g>
 </svg>

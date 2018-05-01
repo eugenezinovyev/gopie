@@ -8,8 +8,9 @@
      
     <defs>
         
-        
-        <mask id="slice-mask-0">
+            
+                
+                <mask id="slice-mask-0">
     <path d="M 250 150 L 250 28.888888888888886 A 121.11111111111111 121.11111111111111 0 0 1 265.4247317823624 29.875152928255176 Z" fill="white" />
 </mask><mask id="slice-mask-1">
     <path d="M 250 150 L 265.4247317823624 29.875152928255176 A 121.11111111111111 121.11111111111111 0 0 1 327.848721617592 57.223506333368206 Z" fill="white" />
@@ -18,6 +19,8 @@
 </mask><mask id="slice-mask-3">
     <path d="M 250 150 L 357.84048464927685 94.8789413637856 A 121.11111111111111 121.11111111111111 0 1 1 249.99999999999997 28.888888888888886 Z" fill="white" />
 </mask>
+            
+            
         
         <style>
     @font-face {
@@ -28,15 +31,18 @@
     </defs>
     
     <g id="chart">
-        <circle fill="#ffffff" cx="250" cy="150" r="122.11111111111111"/>
-        <g id="slices">
-            <path d="M 250 150 L 250 28.888888888888886 A 121.11111111111111 121.11111111111111 0 0 1 265.4247317823624 29.875152928255176 Z" fill="firebrick" stroke="#ffffff" stroke-width="2" mask="url(#slice-mask-0)" /><path d="M 250 150 L 265.4247317823624 29.875152928255176 A 121.11111111111111 121.11111111111111 0 0 1 327.848721617592 57.223506333368206 Z" fill="sandybrown" stroke="#ffffff" stroke-width="2" mask="url(#slice-mask-1)" /><path d="M 250 150 L 327.848721617592 57.223506333368206 A 121.11111111111111 121.11111111111111 0 0 1 357.84048464927685 94.8789413637856 Z" fill="mediumseagreen" stroke="#ffffff" stroke-width="2" mask="url(#slice-mask-2)" /><path d="M 250 150 L 357.84048464927685 94.8789413637856 A 121.11111111111111 121.11111111111111 0 1 1 249.99999999999997 28.888888888888886 Z" fill="deepskyblue" stroke="#ffffff" stroke-width="2" mask="url(#slice-mask-3)" />
-            
-            <line x1="257.66430522103593" y1="30.133668455965164" x2="258.43002674173147" y2="18.158123768864556" stroke="firebrick" stroke-width="1" />
+        
+            <circle fill="#ffffff" cx="250" cy="150" r="122.11111111111111"/>
+            <g id="slices">
+                <path d="M 250 150 L 250 28.888888888888886 A 121.11111111111111 121.11111111111111 0 0 1 265.4247317823624 29.875152928255176 Z" fill="firebrick" stroke="#ffffff" stroke-width="2" mask="url(#slice-mask-0)" /><path d="M 250 150 L 265.4247317823624 29.875152928255176 A 121.11111111111111 121.11111111111111 0 0 1 327.848721617592 57.223506333368206 Z" fill="sandybrown" stroke="#ffffff" stroke-width="2" mask="url(#slice-mask-1)" /><path d="M 250 150 L 327.848721617592 57.223506333368206 A 121.11111111111111 121.11111111111111 0 0 1 357.84048464927685 94.8789413637856 Z" fill="mediumseagreen" stroke="#ffffff" stroke-width="2" mask="url(#slice-mask-2)" /><path d="M 250 150 L 357.84048464927685 94.8789413637856 A 121.11111111111111 121.11111111111111 0 1 1 249.99999999999997 28.888888888888886 Z" fill="deepskyblue" stroke="#ffffff" stroke-width="2" mask="url(#slice-mask-3)" />
+                
+                <line x1="257.66430522103593" y1="30.133668455965164" x2="258.43002674173147" y2="18.158123768864556" stroke="firebrick" stroke-width="1" />
 <text x="258.68526724863" y="14.16627553983102" text-anchor="start" alignment-baseline="central" font-family="Roboto Regular" font-size="14">ERROR</text><line x1="298.1987909542713" y1="39.98383953758368" x2="303.01421132713097" y2="28.992400749479174" stroke="sandybrown" stroke-width="1" />
 <text x="304.6193514514175" y="25.32858782011101" text-anchor="start" alignment-baseline="central" font-family="Roboto Regular" font-size="14">WARNING</text><line x1="343.95217226495845" y1="75.16906830032616" x2="353.3386982636777" y2="67.69289751071952" stroke="mediumseagreen" stroke-width="1" />
 <text x="356.4675402632508" y="65.20084058085064" text-anchor="start" alignment-baseline="central" font-family="Roboto Regular" font-size="14">SUGGESTION</text><line x1="187.30752300092786" y1="252.45160974853684" x2="181.04407479010473" y2="262.6872932386774" stroke="deepskyblue" stroke-width="1" />
 <text x="178.95625871983037" y="266.09918773539096" text-anchor="end" alignment-baseline="central" font-family="Roboto Regular" font-size="14">HINT</text>
-        </g>
+            </g>
+        
+        
     </g>
 </svg>

@@ -8,18 +8,35 @@
      {{if or .EmbedFont .NeedsMasking}}
     <defs>
         {{if .NeedsMasking}}
-        {{if .Pie.Circle}}{{template "template.circle.mask.svg" (derefCircle .Pie.Circle)}}{{end}}
-        {{if .Pie.Slices}}{{range .Pie.Slices}}{{template "template.slice.mask.svg" .}}{{end}}{{end}}
+            {{if .Pie}}
+                {{if .Pie.Circle}}{{template "template.circle.mask.svg" (derefCircle .Pie.Circle)}}{{end}}
+                {{if .Pie.Slices}}{{range .Pie.Slices}}{{template "template.slice.mask.svg" .}}{{end}}{{end}}
+            {{end}}
+            {{if .Donut}}
+                {{if .Donut.OuterCircle}}{{template "template.circle.mask.svg" (derefCircle .Donut.OuterCircle)}}{{end}}
+                {{if .Donut.Slices}}{{range .Donut.Slices}}{{template "template.slice.mask.svg" .}}{{end}}{{end}}
+            {{end}}
         {{end}}
         {{if .EmbedFont}}{{template "template.font.svg" .Font}}{{end}}
     </defs>
     {{end}}
     <g id="chart">
-        {{if and .NeedsMasking .Pie.Background}}{{template "template.background.svg" (derefCircle .Pie.Background)}}{{end}}
-        <g id="slices">
-            {{if .Pie.Slices}}{{range .Pie.Slices}}{{template "template.slice.svg" .}}{{end}}{{end}}
-            {{if .Pie.Circle}}{{template "template.circle.svg" (derefCircle .Pie.Circle)}}{{end}}
-            {{range .Labels}}{{template "template.slice.label.svg" .}}{{end}}
-        </g>
+        {{if .Pie}}
+            {{if and .NeedsMasking .Pie.Background}}{{template "template.background.svg" (derefCircle .Pie.Background)}}{{end}}
+            <g id="slices">
+                {{if .Pie.Slices}}{{range .Pie.Slices}}{{template "template.slice.svg" .}}{{end}}{{end}}
+                {{if .Pie.Circle}}{{template "template.circle.svg" (derefCircle .Pie.Circle)}}{{end}}
+                {{range .Labels}}{{template "template.slice.label.svg" .}}{{end}}
+            </g>
+        {{end}}
+        {{if .Donut}}
+            {{if and .NeedsMasking .Donut.Background}}{{template "template.background.svg" (derefCircle .Donut.Background)}}{{end}}
+            <g id="slices">
+                {{if .Donut.Slices}}{{range .Donut.Slices}}{{template "template.slice.svg" .}}{{end}}{{end}}
+                {{if .Donut.OuterCircle}}{{template "template.circle.svg" (derefCircle .Donut.OuterCircle)}}{{end}}
+                {{if .Donut.InnerCircle}}{{template "template.circle.svg" (derefCircle .Donut.InnerCircle)}}{{end}}
+                {{range .Labels}}{{template "template.slice.label.svg" .}}{{end}}
+            </g>
+        {{end}}
     </g>
 </svg>

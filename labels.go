@@ -4,7 +4,7 @@ import (
 	"math"
 )
 
-func createLabels(chart PieChart, pieRect rect) []label {
+func createLabels(chart PieChart, pieRect rectangle) []label {
 	if len(chart.Values) == 0 {
 		return createEmptyLabels()
 	}
@@ -18,7 +18,7 @@ func createEmptyLabels() []label {
 	return make([]label, 0)
 }
 
-func createMultipleLabels(chart PieChart, pieRect rect) []label {
+func createMultipleLabels(chart PieChart, pieRect rectangle) []label {
 	labels := make([]label, len(chart.Values))
 
 	sum := float64(0)
@@ -40,7 +40,7 @@ func createMultipleLabels(chart PieChart, pieRect rect) []label {
 	return labels
 }
 
-func createSingleLabel(chart PieChart, pieRect rect) []label {
+func createSingleLabel(chart PieChart, pieRect rectangle) []label {
 	labelLineInnerRadius := calculateLabelLineInnerRadius(chart, pieRect)
 	labelLineOuterRadius := calculateLabelLineOuterRadius(chart, pieRect)
 	textRadius := calculateTextRadius(chart, pieRect)
@@ -89,29 +89,26 @@ func createLine(index int, innerRadius, outerRadius, angle float64, chart PieCha
 	endX, endY := toDecartTranslate(angle, outerRadius, centerX, centerY)
 
 	return line{
-		Style: style{
-			StrokeWidth: chart.getLabelLineWidth(),
-			StrokeColor: chart.getSliceColor(index),
-		},
-		X1: startX,
-		Y1: startY,
-		X2: endX,
-		Y2: endY,
+		Style: createLabelLineStyle(chart, index),
+		X1:    startX,
+		Y1:    startY,
+		X2:    endX,
+		Y2:    endY,
 	}
 }
 
-func calculateLabelLineInnerRadius(c PieChart, r rect) float64 {
+func calculateLabelLineInnerRadius(c PieChart, r rectangle) float64 {
 	outerRadius := r.calculateIncircleRadius()
 	strokeWidth := c.getStrokeWidth()
 	return outerRadius - strokeWidth
 }
 
-func calculateLabelLineOuterRadius(c PieChart, r rect) float64 {
+func calculateLabelLineOuterRadius(c PieChart, r rectangle) float64 {
 	innerRadius := calculateLabelLineInnerRadius(c, r)
 	return innerRadius + c.getLabelLineFullLength()
 }
 
-func calculateTextRadius(c PieChart, r rect) float64 {
+func calculateTextRadius(c PieChart, r rectangle) float64 {
 	labelLineOuterRadius := calculateLabelLineOuterRadius(c, r)
 	return labelLineOuterRadius + c.getLabelPadding()
 }

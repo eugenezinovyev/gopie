@@ -14,8 +14,6 @@ func (o PieChart) SVG() (svgBytes []byte, err error) {
 	}
 
 	pieRect := calculatePieRect(o, longestLabelRect)
-	pie := newPie(o, pieRect)
-
 	labels := createLabels(o, pieRect)
 
 	font, err := createFontDefault(o)
@@ -24,13 +22,20 @@ func (o PieChart) SVG() (svgBytes []byte, err error) {
 	}
 
 	c := chart{
-		Pie:          pie,
 		Labels:       labels,
 		Width:        o.getWidth(),
 		Height:       o.getHeight(),
 		NeedsMasking: o.getStrokeWidth() > 0,
 		EmbedFont:    o.EmbedFont,
 		Font:         font,
+	}
+
+	if o.getInnerRadius() > 0 {
+		donut := newDonut(o, pieRect)
+		c.Donut = &donut
+	} else {
+		pie := newPie(o, pieRect)
+		c.Pie = &pie
 	}
 
 	tpl, err := createSvgTemplate()
@@ -73,12 +78,12 @@ func renderTemplate(t *template.Template, c chart) (svgBytes []byte, err error) 
 	return
 }
 
-func calculatePieRect(chart PieChart, longestLabelRect rect) rect {
+func calculatePieRect(chart PieChart, longestLabelRect rectangle) rectangle {
 	maxRect := calculatePieMaxRect(chart, longestLabelRect)
 
 	if maxRect.Height < maxRect.Width {
 		widthDiff := maxRect.Width - maxRect.Height
-		return rect{
+		return rectangle{
 			Left:   maxRect.Left + widthDiff/2,
 			Top:    maxRect.Top,
 			Width:  maxRect.Width - widthDiff,
@@ -86,7 +91,7 @@ func calculatePieRect(chart PieChart, longestLabelRect rect) rect {
 		}
 	}
 	heightDiff := maxRect.Height - maxRect.Width
-	return rect{
+	return rectangle{
 		Left:   maxRect.Left,
 		Top:    maxRect.Top + heightDiff/2,
 		Width:  maxRect.Width,
@@ -94,12 +99,12 @@ func calculatePieRect(chart PieChart, longestLabelRect rect) rect {
 	}
 }
 
-func calculatePieMaxRect(chart PieChart, longestLabelRect rect) rect {
+func calculatePieMaxRect(chart PieChart, longestLabelRect rectangle) rectangle {
 	labelLineOuterLength := chart.getLabelLine()
 	xOffset := longestLabelRect.Width + labelLineOuterLength
 	yOffset := longestLabelRect.Height + labelLineOuterLength
 
-	return rect{
+	return rectangle{
 		Left:   xOffset,
 		Top:    yOffset,
 		Width:  chart.getWidth() - xOffset*2,
