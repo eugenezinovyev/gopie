@@ -7,6 +7,7 @@ To install gopie package run:
 This package depends on the following packages:
 - github.com/golang/freetype/truetype
 - golang.org/x/image/font
+- github.com/satori/go.uuid
 
 These package are used for chart label dimensions measure. Check limitations of [github.com/golang/freetype](https://github.com/golang/freetype) package if you plan to use label font different than the default one.
 # Defaults
