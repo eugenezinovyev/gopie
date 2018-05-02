@@ -12,23 +12,23 @@ type donut struct {
 	Background  *circle
 }
 
-func newDonut(chart PieChart, donutRect rectangle) donut {
+func newDonut(chart PieChart, donutRect rectangle, uid string) donut {
 	if len(chart.Values) == 0 {
-		return emptyDonut(chart, donutRect)
+		return emptyDonut(chart, donutRect, uid)
 	}
 
 	if len(chart.Values) == 1 {
-		return uncutDonut(chart, donutRect)
+		return uncutDonut(chart, donutRect, uid)
 	}
 
-	return cutDonut(chart, donutRect)
+	return cutDonut(chart, donutRect, uid)
 }
 
-func emptyDonut(chart PieChart, donutRect rectangle) donut {
+func emptyDonut(chart PieChart, donutRect rectangle, uid string) donut {
 	return donut{}
 }
 
-func uncutDonut(chart PieChart, donutRect rectangle) donut {
+func uncutDonut(chart PieChart, donutRect rectangle, uid string) donut {
 	centerX, centerY := donutRect.getCenter()
 	slicesCircleRadius := calculateSlicesRadius(chart, donutRect)
 
@@ -38,6 +38,7 @@ func uncutDonut(chart PieChart, donutRect rectangle) donut {
 			CenterY: centerY,
 			Radius:  slicesCircleRadius,
 			Style:   createSliceStyle(chart, 0),
+			ChartID: uid,
 		},
 		InnerCircle: &circle{
 			CenterX: centerX,
@@ -49,7 +50,7 @@ func uncutDonut(chart PieChart, donutRect rectangle) donut {
 	}
 }
 
-func cutDonut(chart PieChart, donutRect rectangle) donut {
+func cutDonut(chart PieChart, donutRect rectangle, uid string) donut {
 	centerX, centerY := donutRect.getCenter()
 	outerRadius := calculateSlicesRadius(chart, donutRect)
 	innerRadius := chart.getInnerRadius()
@@ -59,7 +60,7 @@ func cutDonut(chart PieChart, donutRect rectangle) donut {
 	slices := make([]slice, len(chart.Values))
 	for index, value := range chart.Values {
 		angleOffset := (sum / total) * twoPi
-		slices[index] = createDonutSlice(index, total, angleOffset, value, centerX, centerY, outerRadius, innerRadius, chart)
+		slices[index] = createDonutSlice(uid, index, total, angleOffset, value, centerX, centerY, outerRadius, innerRadius, chart)
 		sum += value.Value
 	}
 
@@ -69,7 +70,7 @@ func cutDonut(chart PieChart, donutRect rectangle) donut {
 	}
 }
 
-func createDonutSlice(id int, total, angleOffset float64, value Value, centerX, centerY, outerRadius, innerRadius float64, chart PieChart) slice {
+func createDonutSlice(chartID string, id int, total, angleOffset float64, value Value, centerX, centerY, outerRadius, innerRadius float64, chart PieChart) slice {
 	angle := twoPi * value.Value / total
 	outerStartX, outerStartY := toDecartTranslate(angleOffset, outerRadius, centerX, centerY)
 	outerEndX, outerEndY := toDecartTranslate(angleOffset+angle, outerRadius, centerX, centerY)
@@ -96,8 +97,9 @@ func createDonutSlice(id int, total, angleOffset float64, value Value, centerX, 
 		outerEndX, outerEndY)
 
 	return slice{
-		ID:    id,
-		Path:  path,
-		Style: createSliceStyle(chart, id),
+		ChartID: chartID,
+		ID:      id,
+		Path:    path,
+		Style:   createSliceStyle(chart, id),
 	}
 }

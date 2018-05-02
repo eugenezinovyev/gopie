@@ -10,13 +10,13 @@
         
             
                 
-                <mask id="slice-mask-0">
+                <mask id="slice-mask-ba0c8db6-7d89-45a4-ac7a-4cc6f43d67fc-0">
     <path d="M 250 150 L 250 28.888888888888886 A 121.11111111111111 121.11111111111111 0 0 1 265.4247317823624 29.875152928255176 Z" fill="white" />
-</mask><mask id="slice-mask-1">
+</mask><mask id="slice-mask-ba0c8db6-7d89-45a4-ac7a-4cc6f43d67fc-1">
     <path d="M 250 150 L 265.4247317823624 29.875152928255176 A 121.11111111111111 121.11111111111111 0 0 1 327.848721617592 57.223506333368206 Z" fill="white" />
-</mask><mask id="slice-mask-2">
+</mask><mask id="slice-mask-ba0c8db6-7d89-45a4-ac7a-4cc6f43d67fc-2">
     <path d="M 250 150 L 327.848721617592 57.223506333368206 A 121.11111111111111 121.11111111111111 0 0 1 357.84048464927685 94.8789413637856 Z" fill="white" />
-</mask><mask id="slice-mask-3">
+</mask><mask id="slice-mask-ba0c8db6-7d89-45a4-ac7a-4cc6f43d67fc-3">
     <path d="M 250 150 L 357.84048464927685 94.8789413637856 A 121.11111111111111 121.11111111111111 0 1 1 249.99999999999997 28.888888888888886 Z" fill="white" />
 </mask>
             
@@ -34,7 +34,7 @@
         
             <circle fill="#ffffff" cx="250" cy="150" r="122.11111111111111"/>
             <g id="slices">
-                <path d="M 250 150 L 250 28.888888888888886 A 121.11111111111111 121.11111111111111 0 0 1 265.4247317823624 29.875152928255176 Z" fill="firebrick" stroke="#ffffff" stroke-width="2" mask="url(#slice-mask-0)" /><path d="M 250 150 L 265.4247317823624 29.875152928255176 A 121.11111111111111 121.11111111111111 0 0 1 327.848721617592 57.223506333368206 Z" fill="sandybrown" stroke="#ffffff" stroke-width="2" mask="url(#slice-mask-1)" /><path d="M 250 150 L 327.848721617592 57.223506333368206 A 121.11111111111111 121.11111111111111 0 0 1 357.84048464927685 94.8789413637856 Z" fill="mediumseagreen" stroke="#ffffff" stroke-width="2" mask="url(#slice-mask-2)" /><path d="M 250 150 L 357.84048464927685 94.8789413637856 A 121.11111111111111 121.11111111111111 0 1 1 249.99999999999997 28.888888888888886 Z" fill="deepskyblue" stroke="#ffffff" stroke-width="2" mask="url(#slice-mask-3)" />
+                <path d="M 250 150 L 250 28.888888888888886 A 121.11111111111111 121.11111111111111 0 0 1 265.4247317823624 29.875152928255176 Z" fill="firebrick" stroke="#ffffff" stroke-width="2" mask="url(#slice-mask-ba0c8db6-7d89-45a4-ac7a-4cc6f43d67fc-0)" /><path d="M 250 150 L 265.4247317823624 29.875152928255176 A 121.11111111111111 121.11111111111111 0 0 1 327.848721617592 57.223506333368206 Z" fill="sandybrown" stroke="#ffffff" stroke-width="2" mask="url(#slice-mask-ba0c8db6-7d89-45a4-ac7a-4cc6f43d67fc-1)" /><path d="M 250 150 L 327.848721617592 57.223506333368206 A 121.11111111111111 121.11111111111111 0 0 1 357.84048464927685 94.8789413637856 Z" fill="mediumseagreen" stroke="#ffffff" stroke-width="2" mask="url(#slice-mask-ba0c8db6-7d89-45a4-ac7a-4cc6f43d67fc-2)" /><path d="M 250 150 L 357.84048464927685 94.8789413637856 A 121.11111111111111 121.11111111111111 0 1 1 249.99999999999997 28.888888888888886 Z" fill="deepskyblue" stroke="#ffffff" stroke-width="2" mask="url(#slice-mask-ba0c8db6-7d89-45a4-ac7a-4cc6f43d67fc-3)" />
                 
                 <line x1="257.66430522103593" y1="30.133668455965164" x2="258.43002674173147" y2="18.158123768864556" stroke="firebrick" stroke-width="1" />
 <text x="258.68526724863" y="14.16627553983102" text-anchor="start" alignment-baseline="central" font-family="Roboto Regular" font-size="14">ERROR</text><line x1="298.1987909542713" y1="39.98383953758368" x2="303.01421132713097" y2="28.992400749479174" stroke="sandybrown" stroke-width="1" />

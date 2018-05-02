@@ -12,8 +12,8 @@
             
             <g id="slices">
                 
-                <circle fill="#ef5350" cx="250" cy="150" r="124.66666666666666" stroke="#ffffff" stroke-width="0" mask="url(#circle-mask)"/>
-                <circle fill="#ffffff" cx="250" cy="150" r="90" stroke="" stroke-width="0" mask="url(#circle-mask)"/>
+                <circle fill="#ef5350" cx="250" cy="150" r="124.66666666666666" stroke="#ffffff" stroke-width="0" mask="url(#circle-mask-c6e3d8d5-f3ea-44a8-81c3-d8f4f1883882)"/>
+                <circle fill="#ffffff" cx="250" cy="150" r="90" stroke="" stroke-width="0" mask="url(#circle-mask-)"/>
                 <line x1="374.66666666666663" y1="150" x2="384.66666666666663" y2="150" stroke="#ef5350" stroke-width="2" />
 <text x="388.66666666666663" y="150" text-anchor="start" alignment-baseline="central" font-family="Roboto Medium" font-size="12">Single Value</text>
             </g>

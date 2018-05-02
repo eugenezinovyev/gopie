@@ -4,10 +4,17 @@ import (
 	"bytes"
 	"encoding/base64"
 	"text/template"
+
+	"github.com/satori/go.uuid"
 )
 
 // SVG function renders pie chart to SVG
 func (o PieChart) SVG() (svgBytes []byte, err error) {
+	uid, err := uuid.NewV4()
+	if err != nil {
+		return
+	}
+
 	longestLabelRect, err := measureLongestLabel(o)
 	if err != nil {
 		return
@@ -31,10 +38,10 @@ func (o PieChart) SVG() (svgBytes []byte, err error) {
 	}
 
 	if o.getInnerRadius() > 0 {
-		donut := newDonut(o, pieRect)
+		donut := newDonut(o, pieRect, uid.String())
 		c.Donut = &donut
 	} else {
-		pie := newPie(o, pieRect)
+		pie := newPie(o, pieRect, uid.String())
 		c.Pie = &pie
 	}
 

@@ -10,7 +10,7 @@
         
             
             <g id="slices">
-                <path d="M 100 100 L 100 39 A 61 61 0 0 1 143.1335136523794 56.8664863476206 Z" fill="#ef5350" stroke="#ffffff" stroke-width="0" mask="url(#slice-mask-0)" /><path d="M 100 100 L 143.1335136523794 56.8664863476206 A 61 61 0 0 1 143.1335136523794 143.1335136523794 Z" fill="#ec407a" stroke="#ffffff" stroke-width="0" mask="url(#slice-mask-1)" /><path d="M 100 100 L 143.1335136523794 143.1335136523794 A 61 61 0 1 1 99.99999999999999 39 Z" fill="#ab47bc" stroke="#ffffff" stroke-width="0" mask="url(#slice-mask-2)" />
+                <path d="M 100 100 L 100 39 A 61 61 0 0 1 143.1335136523794 56.8664863476206 Z" fill="#ef5350" stroke="#ffffff" stroke-width="0" mask="url(#slice-mask-c0efc87b-915d-4227-9a08-63df70f44a7c-0)" /><path d="M 100 100 L 143.1335136523794 56.8664863476206 A 61 61 0 0 1 143.1335136523794 143.1335136523794 Z" fill="#ec407a" stroke="#ffffff" stroke-width="0" mask="url(#slice-mask-c0efc87b-915d-4227-9a08-63df70f44a7c-1)" /><path d="M 100 100 L 143.1335136523794 143.1335136523794 A 61 61 0 1 1 99.99999999999999 39 Z" fill="#ab47bc" stroke="#ffffff" stroke-width="0" mask="url(#slice-mask-c0efc87b-915d-4227-9a08-63df70f44a7c-2)" />
                 
                 <line x1="123.34368937427047" y1="43.64334851681151" x2="127.17052369792137" y2="34.40455319169864" stroke="#ef5350" stroke-width="2" />
 <text x="128.70125742738173" y="30.709035061653495" text-anchor="start" alignment-baseline="central" font-family="Roboto Medium" font-size="12">One</text><line x1="161" y1="100" x2="171" y2="100" stroke="#ec407a" stroke-width="2" />

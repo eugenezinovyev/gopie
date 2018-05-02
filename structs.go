@@ -9,12 +9,14 @@ type style struct {
 }
 
 type slice struct {
-	ID    int
-	Path  string
-	Style style
+	ChartID string
+	ID      int
+	Path    string
+	Style   style
 }
 
 type circle struct {
+	ChartID string
 	CenterX float64
 	CenterY float64
 	Radius  float64

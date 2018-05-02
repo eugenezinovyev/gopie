@@ -1,3 +1,3 @@
-<mask id="slice-mask-{{.ID}}">
+<mask id="slice-mask-{{.ChartID}}-{{.ID}}">
     <path d="{{.Path}}" fill="white" />
 </mask>

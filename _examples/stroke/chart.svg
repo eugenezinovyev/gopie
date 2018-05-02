@@ -10,13 +10,13 @@
         
             
                 
-                <mask id="slice-mask-0">
+                <mask id="slice-mask-2209174a-1c18-464e-b412-8ede17d4c60c-0">
     <path d="M 100 100 L 100 36 A 64 64 0 0 1 141.1384070199385 50.9731556403854 Z" fill="white" />
-</mask><mask id="slice-mask-1">
+</mask><mask id="slice-mask-2209174a-1c18-464e-b412-8ede17d4c60c-1">
     <path d="M 100 100 L 141.1384070199385 50.9731556403854 A 64 64 0 0 1 163.02769619278132 88.88651662931645 Z" fill="white" />
-</mask><mask id="slice-mask-2">
+</mask><mask id="slice-mask-2209174a-1c18-464e-b412-8ede17d4c60c-2">
     <path d="M 100 100 L 163.02769619278132 88.88651662931645 A 64 64 0 0 1 121.88928917284281 160.14032773029814 Z" fill="white" />
-</mask><mask id="slice-mask-3">
+</mask><mask id="slice-mask-2209174a-1c18-464e-b412-8ede17d4c60c-3">
     <path d="M 100 100 L 121.88928917284281 160.14032773029814 A 64 64 0 1 1 99.99999999999999 36 Z" fill="white" />
 </mask>
             
@@ -29,7 +29,7 @@
         
             <circle fill="white" cx="100" cy="100" r="65"/>
             <g id="slices">
-                <path d="M 100 100 L 100 36 A 64 64 0 0 1 141.1384070199385 50.9731556403854 Z" fill="#ef5350" stroke="white" stroke-width="2" mask="url(#slice-mask-0)" /><path d="M 100 100 L 141.1384070199385 50.9731556403854 A 64 64 0 0 1 163.02769619278132 88.88651662931645 Z" fill="#ec407a" stroke="white" stroke-width="2" mask="url(#slice-mask-1)" /><path d="M 100 100 L 163.02769619278132 88.88651662931645 A 64 64 0 0 1 121.88928917284281 160.14032773029814 Z" fill="#ab47bc" stroke="white" stroke-width="2" mask="url(#slice-mask-2)" /><path d="M 100 100 L 121.88928917284281 160.14032773029814 A 64 64 0 1 1 99.99999999999999 36 Z" fill="#7e57c2" stroke="white" stroke-width="2" mask="url(#slice-mask-3)" />
+                <path d="M 100 100 L 100 36 A 64 64 0 0 1 141.1384070199385 50.9731556403854 Z" fill="#ef5350" stroke="white" stroke-width="2" mask="url(#slice-mask-2209174a-1c18-464e-b412-8ede17d4c60c-0)" /><path d="M 100 100 L 141.1384070199385 50.9731556403854 A 64 64 0 0 1 163.02769619278132 88.88651662931645 Z" fill="#ec407a" stroke="white" stroke-width="2" mask="url(#slice-mask-2209174a-1c18-464e-b412-8ede17d4c60c-1)" /><path d="M 100 100 L 163.02769619278132 88.88651662931645 A 64 64 0 0 1 121.88928917284281 160.14032773029814 Z" fill="#ab47bc" stroke="white" stroke-width="2" mask="url(#slice-mask-2209174a-1c18-464e-b412-8ede17d4c60c-2)" /><path d="M 100 100 L 121.88928917284281 160.14032773029814 A 64 64 0 1 1 99.99999999999999 36 Z" fill="#7e57c2" stroke="white" stroke-width="2" mask="url(#slice-mask-2209174a-1c18-464e-b412-8ede17d4c60c-3)" />
                 
                 <line x1="121.54726902951712" y1="40.799364890487766" x2="123.59938988947114" y2="35.16120916577232" stroke="#ef5350" stroke-width="1" />
 <text x="124.96747046277382" y="31.402438682628684" text-anchor="start" alignment-baseline="central" font-family="Roboto Medium" font-size="12">One</text><line x1="154.55960043841964" y1="68.5" x2="159.75575286112627" y2="65.5" stroke="#ec407a" stroke-width="1" />

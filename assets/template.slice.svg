@@ -1,1 +1,1 @@
-<path d="{{.Path}}" fill="{{.Style.Fill}}" stroke="{{.Style.StrokeColor}}" stroke-width="{{.Style.StrokeWidth}}" mask="url(#slice-mask-{{.ID}})" />
+<path d="{{.Path}}" fill="{{.Style.Fill}}" stroke="{{.Style.StrokeColor}}" stroke-width="{{.Style.StrokeWidth}}" mask="url(#slice-mask-{{.ChartID}}-{{.ID}})" />

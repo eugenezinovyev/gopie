@@ -11,23 +11,23 @@ type pie struct {
 	Background *circle
 }
 
-func newPie(chart PieChart, pieRect rectangle) pie {
+func newPie(chart PieChart, pieRect rectangle, uid string) pie {
 	if len(chart.Values) == 0 {
-		return emptyPie(chart, pieRect)
+		return emptyPie(chart, pieRect, uid)
 	}
 
 	if len(chart.Values) == 1 {
-		return uncutPie(chart, pieRect)
+		return uncutPie(chart, pieRect, uid)
 	}
 
-	return cutPie(chart, pieRect)
+	return cutPie(chart, pieRect, uid)
 }
 
-func emptyPie(chart PieChart, pieRect rectangle) pie {
+func emptyPie(chart PieChart, pieRect rectangle, uid string) pie {
 	return pie{}
 }
 
-func uncutPie(chart PieChart, pieRect rectangle) pie {
+func uncutPie(chart PieChart, pieRect rectangle, uid string) pie {
 	centerX, centerY := pieRect.getCenter()
 	slicesCircleRadius := calculateSlicesRadius(chart, pieRect)
 
@@ -37,12 +37,13 @@ func uncutPie(chart PieChart, pieRect rectangle) pie {
 			CenterY: centerY,
 			Radius:  slicesCircleRadius,
 			Style:   createSliceStyle(chart, 0),
+			ChartID: uid,
 		},
 		Background: createBackgroundCircle(chart, pieRect),
 	}
 }
 
-func cutPie(chart PieChart, pieRect rectangle) pie {
+func cutPie(chart PieChart, pieRect rectangle, uid string) pie {
 	centerX, centerY := pieRect.getCenter()
 	radius := calculateSlicesRadius(chart, pieRect)
 
@@ -51,7 +52,7 @@ func cutPie(chart PieChart, pieRect rectangle) pie {
 	slices := make([]slice, len(chart.Values))
 	for index, value := range chart.Values {
 		angleOffset := (sum / total) * twoPi
-		slices[index] = createPieSlice(index, total, angleOffset, value, centerX, centerY, radius, chart)
+		slices[index] = createPieSlice(uid, index, total, angleOffset, value, centerX, centerY, radius, chart)
 		sum += value.Value
 	}
 
@@ -61,7 +62,7 @@ func cutPie(chart PieChart, pieRect rectangle) pie {
 	}
 }
 
-func createPieSlice(id int, total, angleOffset float64, value Value, centerX, centerY, radius float64, chart PieChart) slice {
+func createPieSlice(chartID string, id int, total, angleOffset float64, value Value, centerX, centerY, radius float64, chart PieChart) slice {
 	angle := twoPi * value.Value / total
 	startX, startY := toDecartTranslate(angleOffset, radius, centerX, centerY)
 	endX, endY := toDecartTranslate(angleOffset+angle, radius, centerX, centerY)
@@ -80,9 +81,10 @@ func createPieSlice(id int, total, angleOffset float64, value Value, centerX, ce
 		endX, endY)
 
 	return slice{
-		ID:    id,
-		Path:  path,
-		Style: createSliceStyle(chart, id),
+		ChartID: chartID,
+		ID:      id,
+		Path:    path,
+		Style:   createSliceStyle(chart, id),
 	}
 }
 
