@@ -2,7 +2,7 @@
 Package gopie renders pie charts to SVG.
 # Installation
 To install gopie package run:
-> go get -u github.com/eugenezinoviev/gopie
+> go get -u github.com/eugenezinovyev/gopie
 # Dependencies
 This package depends on the following packages:
 - github.com/golang/freetype/truetype
